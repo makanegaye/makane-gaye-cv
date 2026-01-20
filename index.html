@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Makane Gaye — Senior Software Engineer / Tech Lead</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background: #0b1220;
+      color: #f1f5f9;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px 60px;
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid #334155;
+      background: #111827;
+      color: #e5e7eb;
+      font-weight: 600;
+      cursor: pointer;
+      margin-left: 6px;
+    }
+    .btn.active {
+      background: linear-gradient(135deg, #38bdf8, #a78bfa);
+      color: #020617;
+    }
+
+    .card {
+      background: #020617;
+      border: 1px solid #1e293b;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    h1 { margin: 0; font-size: 34px; }
+    h2 { margin-top: 0; }
+    h3 { margin-bottom: 4px; }
+
+    .muted { color: #94a3b8; }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 14px 0;
+    }
+
+    .tag {
+      border: 1px solid #1e293b;
+      background: #020617;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 13px;
+    }
+
+    .cta {
+      display: inline-block;
+      margin-top: 10px;
+      margin-right: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid #334155;
+      background: #020617;
+      font-weight: 700;
+    }
+    .cta.primary {
+      background: linear-gradient(135deg, #38bdf8, #a78bfa);
+      color: #020617;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    ul {
+      padding-left: 18px;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: #64748b;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+  <div class="top">
+    <div>🌍 France / Senegal</div>
+    <div>
+      <button class="btn active" id="btnEN">EN</button>
+      <button class="btn" id="btnFR">FR</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h1>Makane Gaye</h1>
+    <p class="muted" id="headline">Senior Software Engineer / Tech Lead</p>
+
+    <div class="tags">
+      <span class="tag">📧 makane.gaye@gmail.com</span>
+      <span class="tag">🔗 <a href="https://www.linkedin.com/in/XXXX" target="_blank">LinkedIn</a></span>
+      <span class="tag">📄 <a id="pdfFr" href="Makane_Gaye_CV_FR.pdf" target="_blank">CV PDF (FR)</a></span>
+      <span class="tag">📄 <a id="pdfEn" href="Makane_Gaye_CV_EN.pdf" target="_blank">CV PDF (EN)</a></span>
+    </div>
+
+    <a class="cta primary" id="btnPdfMain" href="Makane_Gaye_CV_EN.pdf" download>
+      Download PDF (EN)
+    </a>
+    <a class="cta" href="#experience">Experience</a>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h2 id="profileTitle">Profile</h2>
+      <p id="profileText"></p>
+    </div>
+
+    <div class="card">
+      <h2 id="skillsTitle">Key Skills</h2>
+      <ul id="skillsList"></ul>
+    </div>
+  </div>
+
+  <div class="card" id="experience">
+    <h2 id="expTitle">Experience</h2>
+    <div id="expBlocks"></div>
+  </div>
+
+  <div class="card">
+    <h2 id="eduTitle">Education & Languages</h2>
+    <p id="eduText"></p>
+    <ul id="langList"></ul>
+  </div>
+
+  <footer id="footerText"></footer>
+
+</div>
+
+<script>
+const CONTENT = {
+  en: {
+    headline: "Senior Software Engineer / Tech Lead",
+    profileTitle: "Profile",
+    profileText:
+      "Senior software engineer with 10+ years of experience in backend-heavy systems, APIs and enterprise platforms. Strong delivery culture, production support expertise and technical leadership.",
+    skillsTitle: "Key Skills",
+    skills: [
+      "PHP, Java, Spring Boot, Spring Batch",
+      "Angular, JavaScript, TypeScript",
+      "Oracle, MySQL, PostgreSQL, Elasticsearch",
+      "Docker, Jenkins, CI/CD, Linux",
+      "REST APIs, Microservices, Batch processing",
+      "Agile / Scrum, TDD, Code reviews"
+    ],
+    expTitle: "Experience",
+    exp: [
+      {
+        title: "Renault SCOPE (Mobilize Financial Services) — Project Manager / Full-Stack Developer",
+        meta: "Aug 2019 — Present",
+        bullets: [
+          "Migration from Zephyr to Jade targeting platform.",
+          "Agile/Scrum setup, Jira, ceremonies and team onboarding.",
+          "Reverse engineering of business rules.",
+          "Angular frontend, Java Spring backend.",
+          "CI/CD Jenkins/Docker, legacy PHP maintenance."
+        ]
+      },
+      {
+        title: "La Plateforme du Bâtiment — PHP Consultant",
+        meta: "Apr 2019 — Jun 2019",
+        bullets: [
+          "GitLab setup and deployment pipelines.",
+          "PHP 5 to PHP 7 migration.",
+          "MySQL migration and tracking tools.",
+          "Integration with Instaply API."
+        ]
+      },
+      {
+        title: "ORION2 (Airbus) — Software Engineer",
+        meta: "Jul 2018 — Mar 2019",
+        bullets: [
+          "Helicopter documentation platform.",
+          "Node.js / Express operations server.",
+          "XML imports with RxJS and Socket.IO."
+        ]
+      },
+      {
+        title: "PSYA — Project Manager / PHP Developer",
+        meta: "Nov 2011 — Jun 2018",
+        bullets: [
+          "Internal tools maintenance and specifications.",
+          "Custom MVC framework (PHP/MySQL).",
+          "Team leadership and ERP migration.",
+          "GDPR compliance, Symfony beneficiary platform.",
+          "Reporting and BI with Tableau."
+        ]
+      },
+      {
+        title: "LaFourchette.com — PHP Software Engineer",
+        meta: "Oct 2010 — Oct 2011",
+        bullets: [
+          "Acquisition features and partner tools.",
+          "Agile environments (Scrum, Kanban)."
+        ]
+      }
+    ],
+    eduTitle: "Education & Languages",
+    eduText: "Engineering degree in Computer Science.",
+    langs: ["French — Native", "English — Professional"],
+    footer: "Shareable link: ?lang=en",
+    mainPdf: "Makane_Gaye_CV_EN.pdf"
+  },
+
+  fr: {
+    headline: "Ingénieur Logiciel Senior / Tech Lead",
+    profileTitle: "Profil",
+    profileText:
+      "Ingénieur logiciel senior avec plus de 10 ans d’expérience sur des systèmes backend-heavy, APIs et plateformes enterprise. Forte culture delivery, support production et leadership technique.",
+    skillsTitle: "Compétences clés",
+    skills: [
+      "PHP, Java, Spring Boot, Spring Batch",
+      "Angular, JavaScript, TypeScript",
+      "Oracle, MySQL, PostgreSQL, Elasticsearch",
+      "Docker, Jenkins, CI/CD, Linux",
+      "APIs REST, Microservices, Batch",
+      "Agile / Scrum, TDD, Revues de code"
+    ],
+    expTitle: "Expérience",
+    exp: [
+      {
+        title: "Renault SCOPE (Mobilize Financial Services) — Chef de projet / Développeur Full-Stack",
+        meta: "Août 2019 — Aujourd’hui",
+        bullets: [
+          "Migration de Zéphyr vers Jade.",
+          "Mise en place Agile/Scrum et Jira.",
+          "Reverse engineering des règles métier.",
+          "Développement Angular et Java Spring.",
+          "CI/CD Jenkins/Docker, maintenance PHP legacy."
+        ]
+      },
+      {
+        title: "La Plateforme du Bâtiment — Consultant PHP",
+        meta: "Avril 2019 — Juin 2019",
+        bullets: [
+          "Mise en place GitLab et déploiements.",
+          "Migration PHP 5 → PHP 7.",
+          "Migration MySQL et outils de suivi.",
+          "Intégration API Instaply."
+        ]
+      },
+      {
+        title: "ORION2 (Airbus) — Ingénieur logiciel",
+        meta: "Juillet 2018 — Mars 2019",
+        bullets: [
+          "Plateforme documentation hélicoptères.",
+          "Serveur Node.js / Express.",
+          "Imports XML via RxJS et Socket.IO."
+        ]
+      },
+      {
+        title: "PSYA — Chef de projet / Développeur PHP",
+        meta: "Novembre 2011 — Juin 2018",
+        bullets: [
+          "Maintenance outils internes et spécifications.",
+          "Framework MVC maison.",
+          "Encadrement équipe et ERP.",
+          "RGPD, plateforme Symfony.",
+          "Reporting Tableau."
+        ]
+      },
+      {
+        title: "LaFourchette.com — Ingénieur PHP",
+        meta: "Octobre 2010 — Octobre 2011",
+        bullets: [
+          "Fonctionnalités acquisition.",
+          "Méthodes agiles Scrum / Kanban."
+        ]
+      }
+    ],
+    eduTitle: "Formation & Langues",
+    eduText: "Diplôme d’ingénieur en informatique.",
+    langs: ["Français — Langue maternelle", "Anglais — Niveau professionnel"],
+    footer: "Lien partageable : ?lang=fr",
+    mainPdf: "Makane_Gaye_CV_FR.pdf"
+  }
+};
+
+function render(lang) {
+  const c = CONTENT[lang];
+  document.getElementById("headline").textContent = c.headline;
+  document.getElementById("profileTitle").textContent = c.profileTitle;
+  document.getElementById("profileText").textContent = c.profileText;
+  document.getElementById("skillsTitle").textContent = c.skillsTitle;
+
+  const skills = document.getElementById("skillsList");
+  skills.innerHTML = "";
+  c.skills.forEach(s => {
+    const li = document.createElement("li");
+    li.textContent = s;
+    skills.appendChild(li);
+  });
+
+  document.getElementById("expTitle").textContent = c.expTitle;
+  const exp = document.getElementById("expBlocks");
+  exp.innerHTML = "";
+  c.exp.forEach(e => {
+    const d = document.createElement("div");
+    d.innerHTML = `<h3>${e.title}</h3><p class="muted">${e.meta}</p><ul>${e.bullets.map(b => `<li>${b}</li>`).join("")}</ul>`;
+    exp.appendChild(d);
+  });
+
+  document.getElementById("eduTitle").textContent = c.eduTitle;
+  document.getElementById("eduText").textContent = c.eduText;
+
+  const langs = document.getElementById("langList");
+  langs.innerHTML = "";
+  c.langs.forEach(l => {
+    const li = document.createElement("li");
+    li.textContent = l;
+    langs.appendChild(li);
+  });
+
+  document.getElementById("footerText").textContent = c.footer;
+  document.getElementById("btnPdfMain").href = c.mainPdf;
+
+  document.getElementById("btnEN").classList.toggle("active", lang === "en");
+  document.getElementById("btnFR").classList.toggle("active", lang === "fr");
+}
+
+const params = new URLSearchParams(window.location.search);
+const lang = params.get("lang") === "fr" ? "fr" : "en";
+render(lang);
+
+document.getElementById("btnEN").onclick = () => {
+  history.replaceState(null, "", "?lang=en");
+  render("en");
+};
+document.getElementById("btnFR").onclick = () => {
+  history.replaceState(null, "", "?lang=fr");
+  render("fr");
+};
+</script>
+
+</body>
+</html>
